@@ -1,7 +1,10 @@
 <?php
 
-// config for IbrahimBougaoua/FilamentSortOrder
-return [
-    'table' => 'users',
-    'sort' => 'asc',
+return[
+    //add tables
+    'tables' => [
+        'table1' => 'users',
+        'table2' => 'products',
+
+    ]
 ];

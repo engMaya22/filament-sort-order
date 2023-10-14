@@ -8,10 +8,15 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::table(config('filament-sort-order.table'), function (Blueprint $table) {
+      //to make the process of adding sort it to tables dyanmic 
+       foreach(config('filament-sort-order.tables') as $key => $value){
+            Schema::table($value, function (Blueprint $table) {
             $table->integer('sort_order')->unsigned()->default(0);
-        });
+            });
 
-        DB::table(config('filament-sort-order.table'))->update(['sort_order' => DB::raw('id')]);
+           DB::table($value)->update(['sort_order' => DB::raw('id')]);
+
+
+        }
     }
 };
